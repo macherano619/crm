@@ -12,18 +12,18 @@ class Cliente(models.Model):
 
 class Imagen(models.Model):
     id_imagen = models.AutoField(primary_key=True)
-    nombre = models.ImageField(upload_to="media/")
+#imagen = models.ImageField(upload_to="media/")
     detalle_cliente = models.ForeignKey('DetalleCliente', on_delete=models.CASCADE)
 
    
 
 class DetalleCliente(models.Model):
     id_detalle_cliente = models.AutoField(primary_key=True)
-    fecha = models.CharField(max_length=50)
-    fecha_f = models.CharField(max_length=50)
-    estado = models.CharField(max_length=50)
-    comentario = models.CharField(max_length=700)
-    programa = models.CharField(max_length=500)
+    fecha = models.CharField(max_length=50, blank=False, null=False)
+    fecha_f = models.CharField(max_length=50, blank=False, null=False)
+    estado = models.CharField(max_length=50, blank=False, null=False)
+    comentario = models.CharField(max_length=700, null=True)
+    programa = models.CharField(max_length=500, blank=False, null=False)
     cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
     
